@@ -4,6 +4,13 @@
 [![Deployment](https://img.shields.io/github/deployments/jvitorcsm/my-place/github-pages?label=Deployment)](https://github.com/jvitorcsm/my-place/deployments)
 [![CI](https://github.com/jvitorcsm/my-place/actions/workflows/tests.yml/badge.svg)](https://github.com/jvitorcsm/my-place/actions/workflows/tests.yml)
 
+<br />
+
+<p align="center">
+  <kbd>
+    <img src="./public/branding/banner-org.png" width="720"/>
+  </kbd>
+</p>
 
 <br />
 
@@ -38,13 +45,13 @@
 ---
 
 ## 🎯 Next steps (roadmap)
-- [ ] Remove unused dependencies
-- [ ] Rewrite sections with custom code (no scaffold)
+- [X] Remove unused dependencies
+- [X] Rewrite sections with custom code (no scaffold)
 - [ ] Improve accessibility (labels, focus, contrast)
 - [ ] Add basic tests with Vitest/RTL
 - [ ] Enhance SEO (title/description per page, OG tags, sitemap)
 - [ ] Create an English version
-- [ ] Add résumé generation in PDF
+- [ ] Add resume generation in PDF - in progress
 
 ---
 
