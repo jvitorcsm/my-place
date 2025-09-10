@@ -6,10 +6,39 @@ import { Analytics } from "@vercel/analytics/next"
 import { Suspense } from "react"
 import "./globals.css"
 
-export const metadata: Metadata = {
-  title: "João Vitor - Cyberpunk Portfolio",
-  description: "Portfolio de desenvolvedor com estética Watch Dogs 2 - Projetos GitHub e habilidades técnicas",
-  generator: "v0.app",
+
+export const metadata = {
+  title: "João Vitor | Portfolio",
+  description: "FullStack Developer and open-source contributor",
+  openGraph: {
+    title: "João Vitor | Portfolio",
+    description: "FullStack Developer and open-source contributor",
+    url: "https://johnv.place",
+    siteName: "johnv.place",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "João Vitor Portfolio",
+      },
+    ],
+    locale: "en_US, pt_BR",
+    type: "website",
+  },
+};
+
+interface GitHubRepo {
+  id: number
+  name: string
+  description: string | null
+  html_url: string
+  homepage: string | null
+  language: string | null
+  stargazers_count: number
+  forks_count: number
+  updated_at: string
+  topics: string[]
 }
 
 export default function RootLayout({

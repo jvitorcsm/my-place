@@ -16,7 +16,7 @@ export default function ContactModal({ isOpen, onClose, currentLang }: ContactMo
   const [copiedEmail, setCopiedEmail] = useState(false)
 
   const whatsappNumber = "48996053100"
-  const email = "joaovitorcarvalhosavimondo@gmail.com"
+  const email = "me@johnv.place"
 
   const copyToClipboard = async (text: string, type: "whatsapp" | "email") => {
     try {
