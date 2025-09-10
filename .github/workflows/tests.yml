@@ -1,0 +1,65 @@
+name: CI
+
+on:
+  push:
+    branches: [ "**" ]
+  pull_request:
+    branches: [ "**" ]
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    name: Run tests (Node 20)
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Use Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: |
+          if [ -f package-lock.json ]; then
+            npm ci
+          else
+            npm install
+          fi
+
+      # Opcional: se você tiver script de lint
+      - name: Lint
+        if: ${{ hashFiles('**/.eslintrc*') != '' && hashFiles('**/eslint.config.*') != '' || hashFiles('**/.eslintrc*') != '' }}
+        run: |
+          if npm run | grep -q "lint"; then
+            npm run lint
+          else
+            echo "No lint script, skipping."
+          fi
+
+      # Opcional: se o build for rápido/necessário no seu fluxo
+      - name: Build
+        run: |
+          if npm run | grep -q "build"; then
+            npm run build
+          else
+            echo "No build script, skipping."
+          fi
+
+      - name: Test
+        env:
+          CI: true
+        run: |
+          if npm run | grep -q "test"; then
+            # --run garante modo não interativo no Vitest
+            npm run test -- --run
+          else
+            echo "No test script, failing."
+            exit 1
+          fi
